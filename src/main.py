@@ -3,6 +3,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-app.get("/")
+@app.get("/")
 def home():
-    return {"message": "Welcome to FastAPI"}
+    return {"message": "Hello, FastAPI!"}
+
