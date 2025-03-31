@@ -1,0 +1,27 @@
+name: 🚀 FastAPI CI (Windows Compatible)
+
+on: [push, pull_request]  # Runs on every push & PR
+
+jobs:
+  test:
+    runs-on: windows-latest  # Runs on Windows environment
+
+    steps:
+      - name: 📂 Checkout Code
+        uses: actions/checkout@v3
+
+      - name: 🐍 Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: 📦 Install Dependencies
+        run: |
+          python -m venv venv
+          venv\Scripts\activate
+          pip install fastapi uvicorn httpx pytest
+
+      - name: 🔍 Run API Tests
+        run: |
+          venv\Scripts\activate
+          pytest tests/
